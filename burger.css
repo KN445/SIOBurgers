@@ -1,0 +1,72 @@
+/* Style pour le titre */
+h1 { 
+    text-align: center; 
+ } 
+ /* Style pour la bande "nos burgers" */
+ .bande-burgers { 
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center; 
+    background-color: #FDB813;
+    padding: 10px;
+ }
+ /* Style pour l'image et la description */
+ .contenu { 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+ } 
+ /* Style pour l'image */
+ .master {
+    width: 30%;
+ }
+ #master {
+    height: 30%;
+ }
+ /* Style pour la description */
+ .contenu div {
+    width: 50%;
+    text-align:center;
+ }
+ /* Style pour la bande "nous contacter" */
+ .bande-contact { 
+    text-align: center; 
+ }
+ 
+ header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header img {
+    width: 20%;
+    margin-right: 10px;
+ }
+ html {
+        font-family: Calibri, sans-serif;
+ }
+ h1 {
+    font-size: 100px;
+ }
+ #desc {
+   text-align: center;
+ }
+
+ #panier-btn {
+   background-color: transparent;
+   border: none;
+}
+
+#panier-btn img {
+   width: 30px;
+   height: 30px;
+}
+
+table{
+   border-collapse: collapse
+ }
+
+th{
+   border: 2px solid rgb(241, 90, 90);
+   padding: 6px;
+ }
