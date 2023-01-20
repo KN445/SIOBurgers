@@ -29,9 +29,9 @@
       <p><?php echo $description;?></p>
       <?php
     }
-    ?>
-      <div>
-      <form action="panier.php" method="post">
+      echo "<div>";
+      echo "<form action='panier.php?id=".$identifiant."' method='post'>";
+      ?>
         <label for="quatité">quantite</label>
         <input type="number" id="quantite" name="quantite"
         min="0" max="100">
