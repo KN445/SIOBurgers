@@ -29,23 +29,94 @@
     echo "</ul>";
     $reponse->closeCursor();
 
+    #(Burgers disponible
+    ?>
+    <p>Burgers disponible:</p>
+    <?php
     $reponse= $bdd->query('SELECT * FROM produit WHERE 1 LIKE dispo="1"');
+    echo "<ul>";
     while($donnees = $reponse->fetch())
     {
       $nom=$donnees['nom'];
-      echo "$nom";
+      echo "<li>$nom</li>";
     }
+    echo "</ul>";
     $reponse->closeCursor();
+    #Burgers disponible)
 
-    $reponse= $bdd->query('SELECT MIN(prix),nom,prix FROM produit');
+    #(3 burgers les moins chers
+    ?>
+    <p>Bons plans:</p>
+    <?php
+    $reponse= $bdd->query('SELECT nom,prix FROM produit ORDER BY prix LIMIT 3');
+    echo "<ul>";
     while($donnees = $reponse->fetch())
     {
-      $bonpl=$donnees['nom'];
-      echo "$bonpl";
-      $bonpl=$donnees['prix'];
-      echo "$bonpl";
+      $nom=$donnees['nom'];
+      echo "<li>$nom";
+      $prix=$donnees['prix'];
+      echo ": $prix €</li>";
+    }
+    echo "</ul>";
+    $reponse->closeCursor();
+    #3 burgers les moins chers)
+
+    #(3 produits récemment ajoutés
+    ?>
+    <p>Nouveautés:</p>
+    <?php
+    $reponse= $bdd->query('SELECT nom FROM produit ORDER By id desc LIMIT 3');
+    echo "<ul>";
+    while($donnees = $reponse->fetch())
+    {
+      $nom=$donnees['nom'];
+      echo "<li>$nom</li>";
+    }
+    echo "</ul>";
+    $reponse->closeCursor();
+    #3 produits récemment ajoutés)
+
+    #(nombre total de produits présents dans la base
+    $reponse= $bdd->query('SELECT COUNT(nom) FROM produit');
+    while($donnees = $reponse->fetch())
+    {
+      $total=$donnees['COUNT(nom)'];
+      echo "<li>$total produits.</li>";
     }
     $reponse->closeCursor();
+    #nombre total de produits présents dans la base)
+
+    #3 + noté(
+    ?>
+    <p>Les + noté:</p>
+    <?php
+      $reponse= $bdd->query('SELECT nom,note FROM produit ORDER By note desc LIMIT 3');
+      echo "<ul>";
+    while($donnees = $reponse->fetch())
+    {
+      $nom=$donnees['nom'];
+      echo "<li>$nom";
+      $note=$donnees['note'];
+      echo ": $note étoiles!</li>";
+    }
+    echo "</ul>";
+    $reponse->closeCursor();
+    #3 + noté)
+
+    #burgers classique disponible(
+    ?>
+    <p>Les burgers classique disponible:</p>
+    <?php
+      $reponse= $bdd->query('SELECT nom FROM produit WHERE categorie="classique" AND dispo=1');
+      echo "<ul>";
+    while($donnees = $reponse->fetch())
+    {
+      $nom=$donnees['nom'];
+      echo "<li>$nom</li>";
+    }
+    echo "</ul>";
+    $reponse->closeCursor();
+    #burgers classique disponible)
 
     ?>
       <div class="bande-burgers">
